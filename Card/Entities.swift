@@ -40,3 +40,44 @@ enum Suit:CustomStringConvertible {
     static var all = [Heart, Diamond, Club, Spade]
 }
 
+struct Card:Equatable, CustomStringConvertible{
+    
+    let rank:Rank
+    let suit:Suit
+    
+    var description: String{
+        return "\(rank)_of_\(suit)"
+    }
+}
+
+struct Game{
+    
+    var cards = [Card]()
+    
+    static func getFull()->Game{
+        var list = [Card]()
+        for rank in Rank.all{
+            for suit in Suit.all{
+                list.append(Card(rank: rank, suit: suit))
+            }
+        }
+        return Game(cards: list)
+    }
+    
+    func shuffle()->Game{
+        var list = cards
+        for i in 0..<cards.count - 1{
+            let j = Int(arc4random_uniform(UInt32(cards.count - i))) + i
+            if j != i{
+                list.swapAt(i, j)
+            }
+        }
+        return Game(cards: list)
+    }
+    
+    func getNumOfCards(num: Int)->Game{
+        return Game(cards: Array(cards[0..<num]))
+    }
+    
+}
+
