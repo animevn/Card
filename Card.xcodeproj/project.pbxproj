@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F13C398A231D607F0016B272 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C3989231D607F0016B272 /* Entities.swift */; };
+		F1B54B37231D788500B38767 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B54B36231D788500B38767 /* MenuController.swift */; };
 		F1C29342231D4D0600DFD49F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C29341231D4D0600DFD49F /* AppDelegate.swift */; };
 		F1C29344231D4D0600DFD49F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C29343231D4D0600DFD49F /* ViewController.swift */; };
 		F1C29349231D4D0700DFD49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1C29348231D4D0700DFD49F /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		F13C3989231D607F0016B272 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		F1B54B36231D788500B38767 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		F1C2933E231D4D0600DFD49F /* Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Card.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C29341231D4D0600DFD49F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1C29343231D4D0600DFD49F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				F1C29341231D4D0600DFD49F /* AppDelegate.swift */,
+				F1B54B36231D788500B38767 /* MenuController.swift */,
 				F1C29343231D4D0600DFD49F /* ViewController.swift */,
 				F13C3989231D607F0016B272 /* Entities.swift */,
 				F1C2934A231D4D0700DFD49F /* Launch.storyboard */,
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1B54B37231D788500B38767 /* MenuController.swift in Sources */,
 				F13C398A231D607F0016B272 /* Entities.swift in Sources */,
 				F1C29344231D4D0600DFD49F /* ViewController.swift in Sources */,
 				F1C29342231D4D0600DFD49F /* AppDelegate.swift in Sources */,
