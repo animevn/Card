@@ -1,10 +1,12 @@
 import UIKit
 
-enum Level{
-    case Easy, Normal, Hard
+enum Level:Int, Codable{
+    
+    case Easy = 0, Normal, Hard
+    
 }
 
-enum Rank:Int, CustomStringConvertible{
+enum Rank:Int, CustomStringConvertible, Codable{
     case Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
     
     var description: String{
@@ -26,8 +28,8 @@ enum Rank:Int, CustomStringConvertible{
     static var all = [Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King]
 }
 
-enum Suit:CustomStringConvertible {
-    case Heart, Diamond, Club, Spade
+enum Suit:Int, CustomStringConvertible, Codable{
+    case Heart = 0, Diamond, Club, Spade
     var description: String{
         switch self{
         case .Heart:
@@ -44,7 +46,7 @@ enum Suit:CustomStringConvertible {
     static var all = [Heart, Diamond, Club, Spade]
 }
 
-struct Card:Equatable, CustomStringConvertible{
+struct Card:Equatable, CustomStringConvertible, Codable{
     
     let rank:Rank
     let suit:Suit
@@ -54,7 +56,7 @@ struct Card:Equatable, CustomStringConvertible{
     }
 }
 
-struct Game{
+struct Game:Codable{
     
     var cards = [Card]()
     
@@ -82,7 +84,6 @@ struct Game{
     func getNumOfCards(num: Int)->Game{
         return Game(cards: Array(cards[0..<num]))
     }
-    
 }
 
 func screenSize()->(x:CGFloat, y:CGFloat, centerX:CGFloat, centerY:CGFloat){

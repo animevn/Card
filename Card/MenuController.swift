@@ -33,9 +33,6 @@ class MenuController:UIViewController{
         playGame(level: .Hard)
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
