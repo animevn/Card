@@ -11,6 +11,10 @@ class ViewController: UIViewController {
     private var level:Level
     private var cellsView:UICollectionView!
     private var game:Game!
+    private var selectedCells = [IndexPath]()
+    private var guess = 0
+    private var openPairs = 0
+    
     
     init(level:Level){
         self.level = level
@@ -72,7 +76,7 @@ class ViewController: UIViewController {
         cellsView.center = center
         cellsView.delegate = self
         cellsView.dataSource = self
-        cellsView.backgroundColor = .lightGray
+        cellsView.backgroundColor = .clear
         cellsView.isScrollEnabled = true
         cellsView.register(CellView.self, forCellWithReuseIdentifier: "cell")
         view.addSubview(cellsView)
@@ -89,17 +93,88 @@ class ViewController: UIViewController {
         createView()
         createGame()
     }
-
-
 }
 
+//handle cell click
 extension ViewController:UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+    
+    private func openCell(indexPath:IndexPath){
         let cell = cellsView.cellForItem(at: indexPath) as! CellView
         cell.open()
+        selectedCells.append(indexPath)
+        
+    }
+    
+    private func closeCells(indexPaths:[IndexPath]){
+        indexPaths.forEach{
+            let cell = cellsView.cellForItem(at: $0) as! CellView
+            cell.close()
+        }
+    }
+    
+    private func hideCells(indexPaths:[IndexPath]){
+        indexPaths.forEach{
+            let cell = cellsView.cellForItem(at: $0) as! CellView
+            cell.hide()
+        }
+    }
+    
+    private func createAlert(){
+        let alert = UIAlertController(
+            title: "Great",
+            message: "You won the game with just \(guess) guess",
+            preferredStyle: .alert)
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler:{action in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(actionOK)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func showAlertIfNumOfPairsReachLimit(){
+        if openPairs == numOfCards()/2{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.createAlert()
+            })
+        }
+    }
+
+    private func actionIfOpenCardsNotEqual(){
+        if game.cards[selectedCells[0].row] != game.cards[selectedCells[1].row]{
+            guess += 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.closeCells(indexPaths: self.selectedCells)
+                self.selectedCells = []
+            })
+        }
+    }
+    
+    private func actionIfOpenCardsEqual(){
+        if game.cards[selectedCells[0].row] == game.cards[selectedCells[1].row]{
+            openPairs += 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.hideCells(indexPaths: self.selectedCells)
+                self.selectedCells = []
+            })
+            showAlertIfNumOfPairsReachLimit()
+        }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
+        if selectedCells.count >= 2 || selectedCells.contains(indexPath){
+            return
+        }
+        openCell(indexPath: indexPath)
+        if selectedCells.count < 2 {return}
+        actionIfOpenCardsEqual()
+        actionIfOpenCardsNotEqual()
     }
 }
 
+
+//provide data for collectionview
 extension ViewController:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
