@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F13C398A231D607F0016B272 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C3989231D607F0016B272 /* Entities.swift */; };
+		F197ADF2231E6DAA0098C482 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F197ADF1231E6DAA0098C482 /* CellView.swift */; };
 		F1B54B37231D788500B38767 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B54B36231D788500B38767 /* MenuController.swift */; };
 		F1C29342231D4D0600DFD49F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C29341231D4D0600DFD49F /* AppDelegate.swift */; };
 		F1C29344231D4D0600DFD49F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C29343231D4D0600DFD49F /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		F13C3989231D607F0016B272 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		F197ADF1231E6DAA0098C482 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		F1B54B36231D788500B38767 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		F1C2933E231D4D0600DFD49F /* Card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Card.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C29341231D4D0600DFD49F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				F1C29341231D4D0600DFD49F /* AppDelegate.swift */,
 				F1B54B36231D788500B38767 /* MenuController.swift */,
 				F1C29343231D4D0600DFD49F /* ViewController.swift */,
+				F197ADF1231E6DAA0098C482 /* CellView.swift */,
 				F13C3989231D607F0016B272 /* Entities.swift */,
 				F1C2934A231D4D0700DFD49F /* Launch.storyboard */,
 				F1C29348231D4D0700DFD49F /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1B54B37231D788500B38767 /* MenuController.swift in Sources */,
+				F197ADF2231E6DAA0098C482 /* CellView.swift in Sources */,
 				F13C398A231D607F0016B272 /* Entities.swift in Sources */,
 				F1C29344231D4D0600DFD49F /* ViewController.swift in Sources */,
 				F1C29342231D4D0600DFD49F /* AppDelegate.swift in Sources */,

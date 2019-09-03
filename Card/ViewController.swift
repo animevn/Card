@@ -2,13 +2,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private var inset:CGFloat = 10
-    private var space:CGFloat = 5
-    private var level:Level
     let width = screenSize().x
     let height = screenSize().y
     let center = CGPoint(x: screenSize().centerX, y: screenSize().centerY)
-    var cellsView:UICollectionView!
+    
+    private var inset:CGFloat = 10
+    private var space:CGFloat = 5
+    private var level:Level
+    private var cellsView:UICollectionView!
+    private var game:Game!
     
     init(level:Level){
         self.level = level
@@ -36,12 +38,12 @@ class ViewController: UIViewController {
     }
     
     private func cardSize()->CGSize{
-        let cardWidth = (width - inset*2 - (cardLevel().columns + 1)*space)/cardLevel().columns
+        let cardWidth = (width - inset*2 - (cardLevel().columns - 1)*space)/cardLevel().columns
         let cardHeight = cardWidth*1.452
-        if (cardHeight*cardLevel().rows + inset*2 + (cardLevel().rows + 1)*space) <= height{
+        if (cardHeight*cardLevel().rows + inset*2 + (cardLevel().rows - 1)*space) <= height{
             return CGSize(width: cardWidth, height: cardHeight)
         }else{
-            let cardHeight = (height - inset*2 - (cardLevel().rows + 1)*space)/cardLevel().rows
+            let cardHeight = (height - inset*2 - (cardLevel().rows - 1)*space)/cardLevel().rows
             let cardWidth = cardHeight/1.452
             return CGSize(width: cardWidth, height: cardHeight)
         }
@@ -49,8 +51,8 @@ class ViewController: UIViewController {
     
     private func viewSize()->CGSize{
         let (columns, rows) = cardLevel()
-        let viewWidth = cardSize().width*columns + inset*2 + (columns + 1)*space
-        let viewHeight = cardSize().height*rows + inset*2 + (rows + 1)*space
+        let viewWidth = cardSize().width*columns + inset*2 + (columns - 1)*space
+        let viewHeight = cardSize().height*rows + inset*2 + (rows - 1)*space
         return CGSize(width: viewWidth, height: viewHeight)
     }
     
@@ -72,20 +74,30 @@ class ViewController: UIViewController {
         cellsView.dataSource = self
         cellsView.backgroundColor = .lightGray
         cellsView.isScrollEnabled = true
-        cellsView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        cellsView.register(CellView.self, forCellWithReuseIdentifier: "cell")
         view.addSubview(cellsView)
+    }
+    
+    private func createGame(){
+        let fullRandom = Game.getFull().shuffle()
+        let half = fullRandom.getNumOfCards(num: numOfCards()/2)
+        game = Game(cards: half.cards + half.cards).shuffle()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         createView()
+        createGame()
     }
 
 
 }
 
 extension ViewController:UICollectionViewDelegate{
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        let cell = cellsView.cellForItem(at: indexPath) as! CellView
+        cell.open()
+    }
 }
 
 extension ViewController:UICollectionViewDataSource{
@@ -95,8 +107,9 @@ extension ViewController:UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .orange
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
+                                                      for: indexPath) as! CellView
+        cell.createCell(front: game.cards[indexPath.row].description, back: "back")
         return cell
     }
 }
