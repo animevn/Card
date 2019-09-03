@@ -17,6 +17,7 @@ class MenuController:UIViewController{
    
     private func playGame(level:Level){
         let viewController = ViewController(level: level)
+        viewController.modalTransitionStyle = .flipHorizontal
         present(viewController, animated: true, completion: nil)
     }
     

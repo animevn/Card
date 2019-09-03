@@ -11,6 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions:[UIApplication.LaunchOptionsKey:Any]?)->Bool{
         
         window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = .orange
         let menu = MenuController()
         window?.rootViewController = menu
         window?.makeKeyAndVisible()
