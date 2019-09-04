@@ -1,22 +1,24 @@
 import Foundation
 
+struct Save:Codable{
+    let level:Level
+    let game:Game
+    let selectedCells:[IndexPath]
+    let hiddenCells:[IndexPath]
+    let guess:Int
+    let openPairs:Int
+}
+
 class SaveGame:Codable{
     
-    var level:Level
-    var game:Game
-    var selectedCells:[IndexPath]
-    var hiddenCells:[IndexPath]
-    var guess:Int
-    var openPairs:Int
+    var saves = [Save]()
     
-    init(level:Level, game:Game, selectedCells:[IndexPath], hiddenCells:[IndexPath],
-         guess:Int, openPairs:Int){
-        self.level = level
-        self.game = game
-        self.selectedCells = selectedCells
-        self.hiddenCells = hiddenCells
-        self.guess = guess
-        self.openPairs = openPairs
+    func addToSaveGame(save:Save){
+        saves = saves + [save]
+    }
+
+    func removeFromSaveGame(position:Int){
+        saves.remove(at: position)
     }
     
     private func saveToData(saveGame:SaveGame)->Data{
@@ -52,13 +54,7 @@ class SaveGame:Codable{
     
     func loadSaveFromLocal()->SaveGame{
         let data = loadData()
-        var saveGame = SaveGame(
-            level: .Easy,
-            game: Game(),
-            selectedCells: [],
-            hiddenCells: [],
-            guess: 0,
-            openPairs: 0)
+        var saveGame = SaveGame()
         do{
             saveGame = try JSONDecoder().decode(SaveGame.self, from: data)
         }catch let error{

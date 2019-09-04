@@ -2,6 +2,8 @@ import UIKit
 
 class MenuController:UIViewController{
     
+    private var saveGame = SaveGame()
+    
     private func createButton(title:String, color:UIColor, center:CGPoint, action:Selector){
         
         let button = UIButton()
@@ -19,6 +21,8 @@ class MenuController:UIViewController{
     private func playGame(level:Level){
         let viewController = ViewController(level: level)
         viewController.modalTransitionStyle = .flipHorizontal
+        viewController.saveGame = saveGame
+        viewController.save = nil
         present(viewController, animated: true, completion: nil)
     }
     
@@ -35,24 +39,20 @@ class MenuController:UIViewController{
     }
     
     @objc private func onSave(){
-        var saveGame = SaveGame(
-            level: .Easy,
-            game: Game(),
-            selectedCells: [],
-            hiddenCells:[],
-            guess: 0,
-            openPairs: 0)
-        saveGame = saveGame.loadSaveFromLocal()
-        let viewController = ViewController(level:saveGame.level)
-        viewController.modalTransitionStyle = .flipHorizontal
-        viewController.saveGame = saveGame
-        present(viewController, animated: true, completion: nil)
+        
+        let saveList = SaveList()
+        saveList.modalTransitionStyle = .flipHorizontal
+        saveList.saveGame = saveGame
+        present(saveList, animated: true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
-
+        saveGame = SaveGame()
+        saveGame = saveGame.loadSaveFromLocal()
+        
         createButton(
             title: "EASY",
             color: .blue,

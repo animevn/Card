@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     private var guess = 0
     private var openPairs = 0
     private var swipe = UISwipeGestureRecognizer()
-    var saveGame:SaveGame?
+    var saveGame:SaveGame!
+    var save:Save?
     
     init(level:Level){
         self.level = level
@@ -90,17 +91,16 @@ class ViewController: UIViewController {
     }
     
     private func createGame(){
-        if let saveGame = saveGame{
-            game = saveGame.game
-            guess = saveGame.guess
-            selectedCells = saveGame.selectedCells
-            hiddenCells = saveGame.hiddenCells
-            openPairs = saveGame.openPairs
+        if let save = save{
+            game = save.game
+            guess = save.guess
+            selectedCells = save.selectedCells
+            hiddenCells = save.hiddenCells
+            openPairs = save.openPairs
             
         }else{
             createNewGame()
         }
-        
     }
     
     private func createAlertExit(){
@@ -122,13 +122,15 @@ class ViewController: UIViewController {
             title: "Save",
             style: .default,
             handler: { action in
-                let saveGame = SaveGame(level: self.level,
-                                        game: self.game,
-                                        selectedCells: self.selectedCells,
-                                        hiddenCells: self.hiddenCells,
-                                        guess: self.guess,
-                                        openPairs: self.openPairs)
-                saveGame.saveToLocal(saveGame: saveGame)
+                let save = Save(level: self.level,
+                                game: self.game,
+                                selectedCells: self.selectedCells,
+                                hiddenCells: self.hiddenCells,
+                                guess: self.guess,
+                                openPairs: self.openPairs)
+                
+                self.saveGame.addToSaveGame(save: save)
+                self.saveGame.saveToLocal(saveGame: self.saveGame)
         })
         alert.addAction(actionOK)
         alert.addAction(actionCancel)

@@ -1,9 +1,19 @@
 import UIKit
 
-enum Level:Int, Codable{
+enum Level:Int, CustomStringConvertible, Codable{
     
     case Easy = 0, Normal, Hard
     
+    var description: String{
+        switch self{
+        case .Easy:
+            return "Easy"
+        case .Normal:
+            return "Normal"
+        case .Hard:
+            return "Hard"
+        }
+    }
 }
 
 enum Rank:Int, CustomStringConvertible, Codable{
