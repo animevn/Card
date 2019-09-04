@@ -112,7 +112,7 @@ class ViewController: UIViewController {
             title: "OK",
             style: .default,
             handler: {action in
-                self.dismiss(animated: true, completion: nil)
+                self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         })
         let actionCancel = UIAlertAction(
             title: "Cancel",
@@ -181,7 +181,7 @@ extension ViewController:UICollectionViewDelegate{
             message: "You won the game with just \(guess) guess",
             preferredStyle: .alert)
         let actionOK = UIAlertAction(title: "OK", style: .default, handler:{action in
-            self.dismiss(animated: true, completion: nil)
+            self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         })
         alert.addAction(actionOK)
         present(alert, animated: true, completion: nil)

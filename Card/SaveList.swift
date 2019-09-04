@@ -3,10 +3,18 @@ import UIKit
 class SaveList:UITableViewController{
     
     var saveGame:SaveGame!
+    private var swipe = UISwipeGestureRecognizer()
+    
+    @objc func handleSwipe(){
+        dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipe.direction = .left
+        tableView.addGestureRecognizer(swipe)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,5 +38,20 @@ class SaveList:UITableViewController{
         viewController.saveGame = saveGame
         viewController.save = saveGame.saves[indexPath.row]
         present(viewController, animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            saveGame.removeFromSaveGame(position: indexPath.row)
+            tableView.reloadData()
+            saveGame.saveToLocal(saveGame: saveGame)
+        }
     }
 }

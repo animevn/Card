@@ -76,7 +76,5 @@ class MenuController:UIViewController{
             color: .black,
             center: CGPoint(x: screenSize().x/2, y: screenSize().y * 4/5),
             action: #selector(onSave))
-        
     }
-    
 }
