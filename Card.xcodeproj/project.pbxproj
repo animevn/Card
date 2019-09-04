@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1017240231F7DB0000C424A /* SaveList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F101723F231F7DB0000C424A /* SaveList.swift */; };
 		F1017961231EADD500684EB5 /* SaveGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1017960231EADD500684EB5 /* SaveGame.swift */; };
 		F13C398A231D607F0016B272 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13C3989231D607F0016B272 /* Entities.swift */; };
 		F197ADF2231E6DAA0098C482 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F197ADF1231E6DAA0098C482 /* CellView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F101723F231F7DB0000C424A /* SaveList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveList.swift; sourceTree = "<group>"; };
 		F1017960231EADD500684EB5 /* SaveGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveGame.swift; sourceTree = "<group>"; };
 		F13C3989231D607F0016B272 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		F197ADF1231E6DAA0098C482 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				F1C29341231D4D0600DFD49F /* AppDelegate.swift */,
 				F1B54B36231D788500B38767 /* MenuController.swift */,
+				F101723F231F7DB0000C424A /* SaveList.swift */,
 				F1C29343231D4D0600DFD49F /* ViewController.swift */,
 				F197ADF1231E6DAA0098C482 /* CellView.swift */,
 				F13C3989231D607F0016B272 /* Entities.swift */,
@@ -146,6 +149,7 @@
 				F1B54B37231D788500B38767 /* MenuController.swift in Sources */,
 				F197ADF2231E6DAA0098C482 /* CellView.swift in Sources */,
 				F13C398A231D607F0016B272 /* Entities.swift in Sources */,
+				F1017240231F7DB0000C424A /* SaveList.swift in Sources */,
 				F1C29344231D4D0600DFD49F /* ViewController.swift in Sources */,
 				F1017961231EADD500684EB5 /* SaveGame.swift in Sources */,
 				F1C29342231D4D0600DFD49F /* AppDelegate.swift in Sources */,

@@ -3,6 +3,7 @@ import UIKit
 class MenuController:UIViewController{
     
     private func createButton(title:String, color:UIColor, center:CGPoint, action:Selector){
+        
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: screenSize().x/2.5, height: screenSize().y/10)
         button.center = center
@@ -42,7 +43,7 @@ class MenuController:UIViewController{
             guess: 0,
             openPairs: 0)
         saveGame = saveGame.loadSaveFromLocal()
-        let viewController = ViewController(level: saveGame.level)
+        let viewController = ViewController(level:saveGame.level)
         viewController.modalTransitionStyle = .flipHorizontal
         viewController.saveGame = saveGame
         present(viewController, animated: true, completion: nil)

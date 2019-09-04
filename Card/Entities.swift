@@ -21,7 +21,6 @@ enum Rank:Int, CustomStringConvertible, Codable{
             return "king"
         default:
             return String(self.rawValue)
-            
         }
     }
     
