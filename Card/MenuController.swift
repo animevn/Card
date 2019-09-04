@@ -33,6 +33,21 @@ class MenuController:UIViewController{
         playGame(level: .Hard)
     }
     
+    @objc private func onSave(){
+        var saveGame = SaveGame(
+            level: .Easy,
+            game: Game(),
+            selectedCells: [],
+            hiddenCells:[],
+            guess: 0,
+            openPairs: 0)
+        saveGame = saveGame.loadSaveFromLocal()
+        let viewController = ViewController(level: saveGame.level)
+        viewController.modalTransitionStyle = .flipHorizontal
+        viewController.saveGame = saveGame
+        present(viewController, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
@@ -40,20 +55,27 @@ class MenuController:UIViewController{
         createButton(
             title: "EASY",
             color: .blue,
-            center: CGPoint(x: screenSize().x/2, y: screenSize().y * 1/4),
+            center: CGPoint(x: screenSize().x/2, y: screenSize().y * 1/5),
             action: #selector(onEasy))
         
         createButton(
             title: "NORMAL",
             color: .purple,
-            center: CGPoint(x: screenSize().x/2, y: screenSize().y * 2/4),
+            center: CGPoint(x: screenSize().x/2, y: screenSize().y * 2/5),
             action: #selector(onNormal))
         
         createButton(
             title: "HARD",
             color: .black,
-            center: CGPoint(x: screenSize().x/2, y: screenSize().y * 3/4),
+            center: CGPoint(x: screenSize().x/2, y: screenSize().y * 3/5),
             action: #selector(onHard))
+        
+        createButton(
+            title: "Save Games",
+            color: .black,
+            center: CGPoint(x: screenSize().x/2, y: screenSize().y * 4/5),
+            action: #selector(onSave))
+        
     }
     
 }

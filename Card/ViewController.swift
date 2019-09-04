@@ -12,14 +12,15 @@ class ViewController: UIViewController {
     private var cellsView:UICollectionView!
     private var game:Game!
     private var selectedCells = [IndexPath]()
+    private var hiddenCells = [IndexPath]()
     private var guess = 0
     private var openPairs = 0
-    
+    private var swipe = UISwipeGestureRecognizer()
+    var saveGame:SaveGame?
     
     init(level:Level){
         self.level = level
         super.init(nibName: nil, bundle: nil)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -82,16 +83,70 @@ class ViewController: UIViewController {
         view.addSubview(cellsView)
     }
     
-    private func createGame(){
+    private func createNewGame(){
         let fullRandom = Game.getFull().shuffle()
         let half = fullRandom.getNumOfCards(num: numOfCards()/2)
         game = Game(cards: half.cards + half.cards).shuffle()
     }
-
+    
+    private func createGame(){
+        if let saveGame = saveGame{
+            game = saveGame.game
+            guess = saveGame.guess
+            selectedCells = saveGame.selectedCells
+            hiddenCells = saveGame.hiddenCells
+            openPairs = saveGame.openPairs
+            
+        }else{
+            createNewGame()
+        }
+        
+    }
+    
+    private func createAlertExit(){
+        let alert = UIAlertController(
+            title: "Exit game",
+            message: "Do you want to quit?",
+            preferredStyle: .alert)
+        let actionOK = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: {action in
+                self.dismiss(animated: true, completion: nil)
+        })
+        let actionCancel = UIAlertAction(
+            title: "Cancel",
+            style: .default,
+            handler: nil)
+        let actionSave = UIAlertAction(
+            title: "Save",
+            style: .default,
+            handler: { action in
+                let saveGame = SaveGame(level: self.level,
+                                        game: self.game,
+                                        selectedCells: self.selectedCells,
+                                        hiddenCells: self.hiddenCells,
+                                        guess: self.guess,
+                                        openPairs: self.openPairs)
+                saveGame.saveToLocal(saveGame: saveGame)
+        })
+        alert.addAction(actionOK)
+        alert.addAction(actionCancel)
+        alert.addAction(actionSave)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func handleSwipe(){
+        createAlertExit()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createView()
         createGame()
+        swipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipe.direction = .left
+        cellsView.addGestureRecognizer(swipe)
     }
 }
 
@@ -102,7 +157,6 @@ extension ViewController:UICollectionViewDelegate{
         let cell = cellsView.cellForItem(at: indexPath) as! CellView
         cell.open()
         selectedCells.append(indexPath)
-        
     }
     
     private func closeCells(indexPaths:[IndexPath]){
@@ -154,12 +208,14 @@ extension ViewController:UICollectionViewDelegate{
             openPairs += 1
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 self.hideCells(indexPaths: self.selectedCells)
+                self.selectedCells.forEach{
+                    self.hiddenCells.append($0)
+                }
                 self.selectedCells = []
             })
             showAlertIfNumOfPairsReachLimit()
         }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
@@ -173,7 +229,6 @@ extension ViewController:UICollectionViewDelegate{
     }
 }
 
-
 //provide data for collectionview
 extension ViewController:UICollectionViewDataSource{
     
@@ -185,7 +240,14 @@ extension ViewController:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
                                                       for: indexPath) as! CellView
+        
         cell.createCell(front: game.cards[indexPath.row].description, back: "back")
+        if selectedCells.contains(indexPath){
+            cell.open()
+        }
+        if hiddenCells.contains(indexPath){
+            cell.hide()
+        }
         return cell
     }
 }
