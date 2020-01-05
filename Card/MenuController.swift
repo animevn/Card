@@ -39,7 +39,6 @@ class MenuController:UIViewController{
     }
     
     @objc private func onSave(){
-        
         let saveList = SaveList()
         saveList.modalTransitionStyle = .flipHorizontal
         saveList.saveGame = saveGame
