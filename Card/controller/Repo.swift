@@ -1,7 +1,8 @@
+import UIKit
 import Foundation
 
 func screenSize()->(x:CGFloat, y:CGFloat, centerX:CGFloat, centerY:CGFloat){
-    
+
     let width = UIScreen.main.bounds.width
     let height = UIScreen.main.bounds.height
     let center = CGPoint(x: width/2, y: height/2)
