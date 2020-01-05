@@ -27,6 +27,28 @@ class Cell: UICollectionViewCell {
         imageView.image = UIImage(named: back)
     }
     
+    func open(){
+        UICollectionViewCell.transition(
+            with: imageView,
+            duration: 1,
+            options: .transitionFlipFromRight,
+            animations: {self.imageView.image = UIImage(named: self.front)},
+            completion: nil)
+    }
     
+    func close(){
+        UICollectionViewCell.transition(
+        with: imageView,
+        duration: 1,
+        options: .transitionFlipFromLeft,
+        animations: {self.imageView.image = UIImage(named: self.back)},
+        completion: nil)
+    }
     
+    func hide(){
+        UICollectionViewCell.animate(
+            withDuration: 1,
+            animations: {self.imageView.alpha = 0},
+            completion: {self.isHidden = $0})
+    }
 }
