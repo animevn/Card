@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mIz-Iu-PT1">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -14,13 +14,103 @@
                     <view key="view" contentMode="scaleToFill" id="CDR-7P-PP7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuScreen" translatesAutoresizingMaskIntoConstraints="NO" id="hru-RK-7jo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="49" translatesAutoresizingMaskIntoConstraints="NO" id="GYZ-74-KwK">
+                                <rect key="frame" x="118" y="120" width="139" height="427"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFd-P3-pwg">
+                                        <rect key="frame" x="0.0" y="0.0" width="139" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="DFd-P3-pwg" secondAttribute="height" multiplier="3:1" id="F5d-yo-xfj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <state key="normal" title="EASY" backgroundImage="bnNormal"/>
+                                        <state key="highlighted" backgroundImage="bnHighlight"/>
+                                        <connections>
+                                            <action selector="bnEasy:" destination="mIz-Iu-PT1" eventType="touchUpInside" id="U5g-GY-HPz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J05-Yl-nHa">
+                                        <rect key="frame" x="0.0" y="95" width="139" height="46.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="J05-Yl-nHa" secondAttribute="height" multiplier="3:1" id="ITp-hA-n5V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <state key="normal" title="NORMAL" backgroundImage="bnNormal"/>
+                                        <state key="highlighted" backgroundImage="bnHighlight"/>
+                                        <connections>
+                                            <action selector="bnNormal:" destination="mIz-Iu-PT1" eventType="touchUpInside" id="kjT-M5-vu2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQ0-Qr-UJh">
+                                        <rect key="frame" x="0.0" y="190.5" width="139" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lQ0-Qr-UJh" secondAttribute="height" multiplier="3:1" id="fpU-1M-kPB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <state key="normal" title="HARD" backgroundImage="bnNormal"/>
+                                        <state key="highlighted" backgroundImage="bnHighlight"/>
+                                        <connections>
+                                            <action selector="bnHard:" destination="mIz-Iu-PT1" eventType="touchUpInside" id="lNG-Kq-iFF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyI-IC-qpM">
+                                        <rect key="frame" x="0.0" y="285.5" width="139" height="46.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="XyI-IC-qpM" secondAttribute="height" multiplier="3:1" id="Gzn-k3-F2g"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                        <state key="normal" title="SAVE GAMES" backgroundImage="bnNormal"/>
+                                        <state key="highlighted" backgroundImage="bnHighlight"/>
+                                        <connections>
+                                            <action selector="bnSave:" destination="mIz-Iu-PT1" eventType="touchUpInside" id="bua-f4-4VO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0L-Uy-Vd0">
+                                        <rect key="frame" x="0.0" y="381" width="139" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="S0L-Uy-Vd0" secondAttribute="height" multiplier="3:1" id="Tyg-x0-c72"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                        <state key="normal" title="GAME CENTER" backgroundImage="bnNormal"/>
+                                        <state key="highlighted" backgroundImage="bnHighlight"/>
+                                        <connections>
+                                            <action selector="bnCenter:" destination="mIz-Iu-PT1" eventType="touchUpInside" id="hmf-oG-0rK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DFd-P3-pwg" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000017" id="6Aj-sb-Ft1"/>
+                                    <constraint firstItem="lQ0-Qr-UJh" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000017" id="E4Y-iz-Vj5"/>
+                                    <constraint firstItem="XyI-IC-qpM" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000017" id="Nea-TE-DvQ"/>
+                                    <constraint firstItem="J05-Yl-nHa" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000017" id="S4m-Hj-rkR"/>
+                                    <constraint firstItem="S0L-Uy-Vd0" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000017" id="SSr-LZ-kf5"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="hru-RK-7jo" secondAttribute="bottom" id="1cb-o3-58g"/>
+                            <constraint firstItem="hru-RK-7jo" firstAttribute="top" secondItem="CDR-7P-PP7" secondAttribute="top" id="Jrf-MW-QpH"/>
+                            <constraint firstAttribute="trailing" secondItem="hru-RK-7jo" secondAttribute="trailing" id="bOm-7k-KtP"/>
+                            <constraint firstItem="GYZ-74-KwK" firstAttribute="centerY" secondItem="EfV-iw-ThJ" secondAttribute="centerY" id="dwC-Xm-as4"/>
+                            <constraint firstItem="hru-RK-7jo" firstAttribute="leading" secondItem="CDR-7P-PP7" secondAttribute="leading" id="pe7-TD-3O0"/>
+                            <constraint firstItem="GYZ-74-KwK" firstAttribute="centerX" secondItem="EfV-iw-ThJ" secondAttribute="centerX" id="suz-st-Gtu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="EfV-iw-ThJ"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yY-Gi-rYi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-116" y="145"/>
+            <point key="canvasLocation" x="-1098" y="-3"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bnHighlight" width="200" height="74"/>
+        <image name="bnNormal" width="200" height="74"/>
+        <image name="menuScreen" width="400" height="708"/>
+    </resources>
 </document>
