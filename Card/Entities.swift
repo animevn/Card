@@ -105,7 +105,7 @@ func screenSize()->(x:CGFloat, y:CGFloat, centerX:CGFloat, centerY:CGFloat){
         
     //11 ProMax 3x, XSMax 3x, 11 2x, XR 2x,  - portrait : status bar = 44, bottom bar = 34
     case (414, 896):
-        //        print("11 ProMax, XSMax, XR")
+        //        print("11 ProMax, 11, XSMax, XR")
         return (414, 896 - 44 - 34, center.x, center.y + 22 - 17)
         
     //X, XS, 11 Pro all 3x portrait : status bar = 44, bottom bar = 34

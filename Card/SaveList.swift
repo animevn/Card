@@ -37,6 +37,7 @@ class SaveList:UITableViewController{
         viewController.modalTransitionStyle = .flipHorizontal
         viewController.saveGame = saveGame
         viewController.save = saveGame.saves[indexPath.row]
+        viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true, completion: nil)
     }
     
