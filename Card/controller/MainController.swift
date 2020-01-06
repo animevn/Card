@@ -38,21 +38,27 @@ class MainController:UIViewController{
     
     private func cardSize()->CGSize{
         let (column, row) = cardsPerLevel()
-        let cardWidth = (screenSize().x  - inset*2 - (column - 1)*space)/column
-        let cardHeight = cardWidth * 1.452
-        if (cardHeight*row + inset*2 + (row - 1)*space) < screenSize().y{
+        let cardWidth = (width  - inset*2 - (column - 1)*space)/column - 0.1
+        let cardHeight = cardWidth * 1.452 - 0.1
+        print("\(cardWidth) _ \(cardHeight)")
+        print("\(cardHeight*row + inset*2 + (row - 1)*space) _ \(height)")
+        if (cardHeight*row + inset*2 + (row - 1)*space) <= height + 1{
             return CGSize(width: cardWidth, height: cardHeight)
         }else{
-            let cardHeight = (screenSize().y  - inset*2 - (row - 1)*space)/row
+            let cardHeight = (height  - inset*2 - (row - 1)*space)/row
             let cardWidth = cardHeight/1.452
+            print("\(cardWidth) _ \(cardHeight)")
+            print("\(cardHeight*row + inset*2 + (row - 1)*space) _ \(height)")
+            print("\(cardWidth*column + inset*2 + (column - 1)*space)")
+
             return CGSize(width: cardWidth, height: cardHeight)
         }
     }
     
     private func viewSize()->CGSize{
         let (column, row) = cardsPerLevel()
-        let width = cardSize().width*column + inset*2 + (column - 1)*space
-        let height = cardSize().height*row + inset*2 + (row - 1)*space
+        let width = cardSize().width*column + inset*2 + (column - 1)*space + 1
+        let height = cardSize().height*row + inset*2 + (row - 1)*space + 1
         return CGSize(width: width, height: height)
     }
     
@@ -69,7 +75,7 @@ class MainController:UIViewController{
         cellView = UICollectionView(
             frame: CGRect(origin: .zero, size: viewSize()),
             collectionViewLayout: layout())
-        cellView.center = CGPoint(x: screenSize().centerX, y: screenSize().centerY)
+        cellView.center = CGPoint(x: center.x, y: center.y)
         cellView.delegate = self
         cellView.dataSource = self
         cellView.register(Cell.self, forCellWithReuseIdentifier: "cell")
@@ -112,6 +118,7 @@ extension MainController:UICollectionViewDelegate{
     private func openCell(indexPath:IndexPath){
         let cell = cellView.cellForItem(at: indexPath) as! Cell
         cell.open()
+        selectedCards.append(indexPath)
     }
 
     private func closeCells(indexPaths:[IndexPath]){
