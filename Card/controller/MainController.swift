@@ -36,7 +36,7 @@ class MainController:UIViewController{
     }
     
     private func numOfCards()->Int{
-        return Int(cardsPerLevel().column * cardsPerLevel().row)
+        Int(cardsPerLevel().column * cardsPerLevel().row)
     }
     
     private func cardSize()->CGSize{
@@ -124,6 +124,7 @@ class MainController:UIViewController{
                     hideCards: hideCards, guess: guess, openPairs: openPairs)
             save.addGame(game: game)
         }
+        save.saveToLocal(games: save)
     }
 
     private func createAlertWhenQuitGame(){
@@ -157,7 +158,7 @@ class MainController:UIViewController{
 
 extension MainController:UICollectionViewDataSource{
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int)->Int{
-        return numOfCards()
+        numOfCards()
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -166,6 +167,12 @@ extension MainController:UICollectionViewDataSource{
                                                       for: indexPath) as! Cell
         let card = deck.cards[indexPath.row]
         cell.createCell(front: card.description, back: "back")
+        if selectedCards.contains(indexPath) {
+            cell.open()
+        }
+        if hideCards.contains(indexPath){
+            cell.hide()
+        }
         return cell
     }
 }
