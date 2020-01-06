@@ -77,9 +77,9 @@
 			children = (
 				F1C29341231D4D0600DFD49F /* AppDelegate.swift */,
 				F1B54B36231D788500B38767 /* MenuController.swift */,
-				F1B72A6B23C229A1008AAE49 /* Repo.swift */,
 				F1B72A8323C23DAB008AAE49 /* MainController.swift */,
 				F1B72A8523C23E44008AAE49 /* Cell.swift */,
+				F1B72A6B23C229A1008AAE49 /* Repo.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
