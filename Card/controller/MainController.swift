@@ -15,6 +15,7 @@ class MainController:UIViewController{
     private var guess = 0
     private var openPairs = 0
     private var selectedCards = [IndexPath]()
+    private var hideCards = [IndexPath]()
     private var cellView:UICollectionView!
     
     deinit {
@@ -170,6 +171,7 @@ extension MainController:UICollectionViewDelegate{
             openPairs += 1
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 self.hideCells(indexPaths: self.selectedCards)
+                self.selectedCards.forEach{self.hideCards.append($0)}
                 self.selectedCards = []
             })
         }

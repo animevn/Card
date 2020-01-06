@@ -41,3 +41,17 @@ func screenSize()->(x:CGFloat, y:CGFloat, centerX:CGFloat, centerY:CGFloat){
     }
 }
 
+let directory:URL = {
+    let url = FileManager().urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+    if !FileManager().fileExists(atPath: url.path){
+        do{
+            try FileManager().createDirectory(at: url, withIntermediateDirectories: false)
+        }catch let error{
+            print(error)
+        }
+    }
+    return url
+}()
+
+let savefile = directory.appendingPathComponent("save")
+
