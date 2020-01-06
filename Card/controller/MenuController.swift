@@ -10,6 +10,7 @@ class MenuController:UIViewController{
         if segue.identifier == "newgame"{
             guard let destination = segue.destination as? MainController else{return}
             destination.modalPresentationStyle = .fullScreen
+            destination.level = sender as? Level
         }
     }
     
