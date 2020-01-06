@@ -83,7 +83,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="DFd-P3-pwg" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000017" id="6Aj-sb-Ft1"/>
+                                    <constraint firstItem="DFd-P3-pwg" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000003" id="6Aj-sb-Ft1"/>
                                     <constraint firstItem="lQ0-Qr-UJh" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000017" id="E4Y-iz-Vj5"/>
                                     <constraint firstItem="XyI-IC-qpM" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000017" id="Nea-TE-DvQ"/>
                                     <constraint firstItem="J05-Yl-nHa" firstAttribute="width" secondItem="GYZ-74-KwK" secondAttribute="width" multiplier="0.4" constant="83.200000000000017" id="S4m-Hj-rkR"/>
@@ -102,10 +102,29 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EfV-iw-ThJ"/>
                     </view>
+                    <connections>
+                        <segue destination="Lqx-iB-eb9" kind="presentation" identifier="newgame" id="pcw-Dd-HuN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yY-Gi-rYi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1098" y="-3"/>
+            <point key="canvasLocation" x="-1108" y="-8"/>
+        </scene>
+        <!--Main Controller-->
+        <scene sceneID="eRH-1J-iai">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Lqx-iB-eb9" customClass="MainController" customModule="Card" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fNr-kX-bDX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Vgm-Ev-k64"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Pjc-XM-A5V"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naC-mu-Y1O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-173" y="-7"/>
         </scene>
     </scenes>
     <resources>
