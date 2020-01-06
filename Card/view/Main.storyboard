@@ -149,6 +149,7 @@
                         <connections>
                             <outlet property="dataSource" destination="td8-U6-K0m" id="nZr-b6-Ho7"/>
                             <outlet property="delegate" destination="td8-U6-K0m" id="rsZ-5V-Q2D"/>
+                            <outletCollection property="gestureRecognizers" destination="epR-cS-JeL" appends="YES" id="yo6-TF-cp3"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Gd5-Gp-Zz6"/>
@@ -157,6 +158,12 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sO3-EF-b31" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="epR-cS-JeL">
+                    <connections>
+                        <action selector="onSwipeRight:" destination="td8-U6-K0m" id="MZd-dU-5RU"/>
+                        <outlet property="delegate" destination="mkY-dO-xLa" id="V2A-jg-hui"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1367" y="716"/>
         </scene>
@@ -169,10 +176,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Vgm-Ev-k64"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jNb-gG-IyN" appends="YES" id="RGB-je-ypb"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Pjc-XM-A5V"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="naC-mu-Y1O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="jNb-gG-IyN">
+                    <connections>
+                        <action selector="onSwipeRight:" destination="Lqx-iB-eb9" id="RXX-HN-ubW"/>
+                        <outlet property="delegate" destination="fNr-kX-bDX" id="29Y-WY-ojk"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-486" y="305"/>
         </scene>

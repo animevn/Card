@@ -1,3 +1,5 @@
+import Foundation
+
 struct Card:Equatable, CustomStringConvertible, Codable{
     let rank:Rank
     let suit:Suit

@@ -1,6 +1,6 @@
 import Foundation
 
-struct Deck:Codable{
+struct Deck:Equatable, Codable{
     var cards = [Card]()
     
     static func full()->Deck{

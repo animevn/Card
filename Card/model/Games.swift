@@ -1,6 +1,7 @@
 import Foundation
 
 class Games:Codable{
+
     var games = [Game]()
 
     deinit {
@@ -16,10 +17,16 @@ class Games:Codable{
         games.remove(at: position)
     }
 
+    func removeGame(game:Game?){
+        if let game = game{
+            games = games.filter{$0 != game}
+        }
+    }
+
     private func saveToData(games:Games)->Data{
         var data = Data()
         do{
-            data = try JSONEncoder.encode(games)
+            data = try JSONEncoder().encode(games)
         }catch let error{
             print(error)
         }
