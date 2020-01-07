@@ -10,14 +10,14 @@ class MainController:UIViewController{
     
     private let inset:CGFloat = 10
     private let space:CGFloat = 5
-    private let width = screenSize().x - 1
-    private let height = screenSize().y - 1
-    private let center = CGPoint(x: screenSize().centerX, y: screenSize().centerY)
+    private let width:CGFloat = screenSize().x - 1
+    private let height:CGFloat = screenSize().y - 1
+    private let center:CGPoint = CGPoint(x: screenSize().centerX, y: screenSize().centerY)
     
-    private var guess = 0
-    private var openPairs = 0
-    private var selectedCards = [IndexPath]()
-    private var hideCards = [IndexPath]()
+    private var guess:Int = 0
+    private var openPairs:Int = 0
+    private var selectedCards:[IndexPath] = [IndexPath]()
+    private var hideCards:[IndexPath] = [IndexPath]()
     private var cellView:UICollectionView!
     
     deinit {
@@ -53,7 +53,6 @@ class MainController:UIViewController{
             print("\(cardWidth) _ \(cardHeight)")
             print("\(cardHeight*row + inset*2 + (row - 1)*space) _ \(height)")
             print("\(cardWidth*column + inset*2 + (column - 1)*space)")
-
             return CGSize(width: cardWidth, height: cardHeight)
         }
     }
@@ -241,7 +240,8 @@ extension MainController:UICollectionViewDelegate{
         showAlertWhenAllCellOpened()
     }
 
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView,
+                               didSelectItemAt indexPath: IndexPath) {
         if selectedCards.count > 1 || selectedCards.contains(indexPath){
             return
         }
