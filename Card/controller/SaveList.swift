@@ -17,7 +17,8 @@ class SaveList:UITableViewController{
         return save == nil ? 0 : save.games.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "saverow", for: indexPath)
         let game = save.games[indexPath.row]
         cell.textLabel?.text = "Level: \(game.level.description) | Pairs opened: \(game.openPairs)"
@@ -66,5 +67,7 @@ class SaveList:UITableViewController{
     @IBAction func onSwipeRight(_ sender: Any) {
         showAlertToQuit()
     }
+    
+    
     
 }

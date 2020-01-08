@@ -151,6 +151,7 @@ class MainController:UIViewController{
 }
 
 extension MainController:UICollectionViewDataSource{
+    
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int)->Int{
         numOfCards()
     }
@@ -204,7 +205,6 @@ extension MainController:UICollectionViewDelegate{
         alert.addAction(actionOK)
         present(alert, animated: true, completion: nil)
     }
-
     private func showAlertWhenAllCellOpened(){
         if openPairs == numOfCards()/2{
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
