@@ -43,16 +43,11 @@ class MainController:UIViewController{
         let (column, row) = cardsPerLevel()
         let cardWidth = (width  - inset*2 - (column - 1)*space)/column - 0.1
         let cardHeight = cardWidth * 1.452 - 0.1
-        print("\(cardWidth) _ \(cardHeight)")
-        print("\(cardHeight*row + inset*2 + (row - 1)*space) _ \(height)")
         if (cardHeight*row + inset*2 + (row - 1)*space) <= height + 1{
             return CGSize(width: cardWidth, height: cardHeight)
         }else{
             let cardHeight = (height  - inset*2 - (row - 1)*space)/row
             let cardWidth = cardHeight/1.452
-            print("\(cardWidth) _ \(cardHeight)")
-            print("\(cardHeight*row + inset*2 + (row - 1)*space) _ \(height)")
-            print("\(cardWidth*column + inset*2 + (column - 1)*space)")
             return CGSize(width: cardWidth, height: cardHeight)
         }
     }
