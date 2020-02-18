@@ -54,4 +54,3 @@ let directory:URL = {
 }()
 
 let savefile = directory.appendingPathComponent("save")
-
